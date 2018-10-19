@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from "axios";
+//import request from "request";
 class Profile extends Component {
   state = {
     name: "Anubhav Natani",
@@ -7,7 +9,7 @@ class Profile extends Component {
     clubs: ["Astronomy", "CSI"]
   };
   renderClubs() {
-    if (this.state.clubs.length == 0) return;
+    if (this.state.clubs.length === 0) return;
     return (
       <div>
         Clubs-
@@ -18,6 +20,28 @@ class Profile extends Component {
         </ul>
       </div>
     );
+  }
+  /*
+  apiCall() {
+    request(
+      "http://lnmiit-sync.herokuapp.com/api/get_user/109481993422611541521",
+      (err, resp, body) => {
+        if (!err && resp.statusCode === 200) {
+          let data = JSON.parse(body);
+          console.log(data);
+        }
+      }
+    );
+  }*/
+
+  apiCall() {
+    axios
+      .get(
+        "http://lnmiit-sync.herokuapp.com/api/get_user/109481993422611541521"
+      )
+      .then(resp => {
+        console.log(resp);
+      });
   }
   render() {
     return (
@@ -31,7 +55,7 @@ class Profile extends Component {
           Year:
           {this.state.year}
         </div>
-        <div>{this.renderClubs()}</div>
+        <div>{this.apiCall()}</div>
       </div>
     );
   }
