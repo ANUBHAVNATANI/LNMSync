@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import axios from "axios";
 //import request from "request";
+import "@material/react-card/dist/card.css";
+
 class Profile extends Component {
   state = {
-    name: "Anubhav Natani",
-    year: "Y-17",
+    name: "",
+    year: "",
     imageUrl: "http://placehold.it/75",
-    clubs: ["Astronomy", "CSI"]
+    clubs: [],
+    batch: "",
+    rollNo: ""
   };
   renderClubs() {
     if (this.state.clubs.length === 0) return;
@@ -25,40 +29,84 @@ class Profile extends Component {
   apiCall() {
     request(
       "http://lnmiit-sync.herokuapp.com/api/get_user/109481993422611541521",
-      (err, resp, body) => {
-        if (!err && resp.statusCode === 200) {
+      function(error, response, body) {
+        if (!error && response.statusCode === 200) {
           let data = JSON.parse(body);
           console.log(data);
         }
       }
     );
-  }*/
-
+  }
+  */
   apiCall() {
     axios
       .get(
-        "http://lnmiit-sync.herokuapp.com/api/get_user/109481993422611541521"
+        "http://lnmiit-sync.herokuapp.com/api/get_user/115861834213921197623"
       )
       .then(resp => {
-        console.log(resp);
+        //basically we directly do not change the state but here i had done it as i am new to react
+        let imageDataUrl = "http://placehold.it/75";
+        if (resp.data.thumbnail !== "NullPhoto") {
+          imageDataUrl = resp.data.thumbnail;
+        }
+        let newState = {
+          name: resp.data.username.toUpperCase(),
+          year: "Y" + resp.data.email[0] + resp.data.email[1],
+          imageUrl: imageDataUrl,
+          clubs: resp.data.clubs,
+          batch: resp.data.batch,
+          rollNo: resp.data.email.split("@")[0]
+        };
+        this.setState(newState);
       });
   }
+  settingProfileData(jsondata) {}
+
   render() {
     return (
       <div>
-        <img src={this.state.imageUrl} alt="" />
-        <div>
-          Name:
-          {this.state.name}
+        {this.apiCall()}
+        <div className="mdc-card">
+          <div children="mdc-card__media mdc-card__media--square">
+            <img src={this.state.imageUrl} alt="" />
+          </div>
+          <div>
+            Name:
+            {this.state.name}
+          </div>
+          <div>
+            Year:
+            {this.state.year}
+          </div>
+          <div>
+            Batch:
+            {this.state.batch}
+          </div>
+          <div>
+            RollNo:
+            {this.state.rollNo}
+          </div>
+          <div>{this.renderClubs()}</div>
         </div>
-        <div>
-          Year:
-          {this.state.year}
-        </div>
-        <div>{this.apiCall()}</div>
       </div>
     );
   }
 }
 
 export default Profile;
+
+/*Random info
+
+https://www.npmjs.com/package/react-calendar
+
+
+https://dev.to/nburgess/creating-a-react-app-with-react-router-and-an-express-backend-33l3
+
+https://www.zeolearn.com/magazine/connecting-reactjs-frontend-with-nodejs-backend
+
+https://www.youtube.com/watch?v=BImhGRTunpY
+
+https://medium.com/@krithix/multi-page-website-with-react-in-2017-f6f2af326526
+
+
+*/
