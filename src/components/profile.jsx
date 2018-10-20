@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 //import request from "request";
 import "@material/react-card/dist/card.css";
+import Calendar from "react-calendar";
 
 class Profile extends Component {
   state = {
@@ -10,7 +11,8 @@ class Profile extends Component {
     imageUrl: "http://placehold.it/75",
     clubs: [],
     batch: "",
-    rollNo: ""
+    rollNo: "",
+    date: new Date()
   };
   renderClubs() {
     if (this.state.clubs.length === 0) return;
@@ -45,6 +47,8 @@ class Profile extends Component {
       )
       .then(resp => {
         //basically we directly do not change the state but here i had done it as i am new to react
+        //console.log(resp.data);
+        //there is some issue in the function it does api calls multiple times insted of doing it single time
         let imageDataUrl = "http://placehold.it/75";
         if (resp.data.thumbnail !== "NullPhoto") {
           imageDataUrl = resp.data.thumbnail;
@@ -55,12 +59,13 @@ class Profile extends Component {
           imageUrl: imageDataUrl,
           clubs: resp.data.clubs,
           batch: resp.data.batch,
-          rollNo: resp.data.email.split("@")[0]
+          rollNo: resp.data.email.split("@")[0],
+          date: new Date()
         };
         this.setState(newState);
       });
   }
-  settingProfileData(jsondata) {}
+  // settingProfileData(jsondata) {}
 
   render() {
     return (
@@ -87,6 +92,9 @@ class Profile extends Component {
             {this.state.rollNo}
           </div>
           <div>{this.renderClubs()}</div>
+        </div>
+        <div>
+          <Calendar value={this.state.date} />
         </div>
       </div>
     );
