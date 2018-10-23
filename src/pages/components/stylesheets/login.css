@@ -1,0 +1,111 @@
+#body-tag {
+  background-color: #ffebee;
+  font-family: "Niramit", sans-serif;
+}
+#login {
+  margin: auto;
+  width: 800px; /*it is doubled*/
+  height: 500px;
+  padding: 3%;
+  background: #fff;
+  border-radius: 25px;
+  color: red;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+  padding-left: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 70px;
+}
+
+#user_image {
+  border-radius: 50%;
+  width: 60%;
+  border: 2px solid red;
+  margin: auto;
+  display: block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*
+input,
+button {
+  margin: auto;
+  border-radius: 20px;
+  height: 25px;
+  width: 75px;
+  margin-bottom: 10px;
+  background-color: rgb(255, 0, 0);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); IDKTFAI*/
+#login-button {
+  height: 50px;
+  width: 100%;
+  margin-top: 5%;
+  color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19); /*IDKTFAI*/
+  font-size: 15px;
+}
+#login-form {
+  margin-left: auto;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+  width: 30%;
+  height: 250px;
+  position: relative;
+  padding-top: 50px;
+}
+
+#login-h1 {
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 50px;
+  color: red;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.19);
+}
+
+/*a
+{
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.19);
+	color:red;
+	text-decoration: none;
+}
+*/
+#login_button {
+  margin-bottom: 20px;
+}
+/*
+button:focus {
+  outline: none;
+}
+*/
+.in-progress {
+  cursor: pointer;
+}
+
+#side {
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  height: 500px; /*we need to change this as per the size of the input image*/
+  width: 500px; /*we need to change this as per the size of the input image*/
+  float: left;
+  margin: 0px 0px;
+  display: block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  /*filter:blur(3px);*/
+}
+
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+  background: #c62828 radial-gradient(circle, transparent 1%, #c62828 1%)
+    center/15000%;
+}
+.ripple:active {
+  background-color: #f00;
+  background-size: 100%;
+  transition: background 0s;
+}

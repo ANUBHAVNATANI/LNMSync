@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+.batch,
+h3 {
+  margin: auto;
+  width: 50%;
+  padding-top: 10px;
+  margin-left: 25%;
+  border-radius: 10px;
+  color: red;
+  font-family: "Nunito", sans-serif;
+}
+
+h3,
+h4 {
+  padding-top: 20px;
+  padding-bottom: 10px;
+  font-size: 35px;
+  text-align: center;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  background-color: #ffebee;
+  font-family: "Nunito", sans-serif;
+  height: 667px;
+}
+#base_format {
+  width: 80%; /*it is doubled*/
+  height: 80%;
+
+  padding: 3%;
+  margin: auto;
+  margin-top: 10%;
+
+  background: #fff;
+  border-radius: 25px;
+  color: red;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.row_council {
+  float: left;
+}
+
+/*The styling of branch select*/
+.dropdown-content li > span {
+  color: red;
+}
+
+.select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid red;
+}
+
+.check {
+  opacity: 0.5;
+  color: #996;
+}
+
+.btnn {
+  height: 100px;
+  width: 200px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.clubs {
+  height: 250px;
+  overflow-y: scroll;
+  padding-left: 8%;
+  margin-bottom: 20px;
+  overflow-x: hidden;
+}
+
+.clubs > p {
+  width: 50%;
+  margin: 10px;
+  float: left;
+  height: 50px;
+  width: 200px;
+}
+
+span:hover,
+span:active {
+  color: #26a69a;
+}
+
+span {
+  width: 200px;
+  margin: 5px;
+  padding: 0px;
+}
+
+.btn {
+  background-color: red;
+  width: 50%;
+  margin-left: 25%;
+  background-color: #f44336;
+  border-radius: 10px;
+  font-family: "Nunito", sans-serif;
+}
