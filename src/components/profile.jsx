@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-//import request from "request";
-import "@material/react-card/dist/card.css";
-import Calendar from "react-calendar";
 
 class Profile extends Component {
   state = {

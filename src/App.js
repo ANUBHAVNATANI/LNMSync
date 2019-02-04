@@ -1,32 +1,35 @@
 import React, { Component } from "react";
-//import logo from "./logo.svg";
 import "./App.css";
-//import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter,Route} from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 //components and pages imports
 
-//import Club from "./pages/components/club";
-import Login from "./pages/components/login";
-//import Inputs from "./pages/components/inputs";
-//import Registration from "./pages/components/registrationForm";
+import Login from "./components/login";
+import Register from "./components/register";
+import Profile from "./components/profile";
+
 
 class App extends Component {
   render() {
     return (
+      <BrowserRouter>
       <div>
-      <Login />
-      <ToastContainer
-      position="bottom-center"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnVisibilityChange
-      draggable
-      pauseOnHover
-      />
+        <Route path='/' component={Login} />
+        <Route path='/registration' component={Register} />
+        <Route path='/profile' component={Profile}/>
+        <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnVisibilityChange
+        draggable
+        pauseOnHover
+        />
       </div>
+      </BrowserRouter>
     );
   }
 }
