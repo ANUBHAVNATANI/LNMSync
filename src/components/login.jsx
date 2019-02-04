@@ -16,7 +16,7 @@ async function checkUser(gId){
         //console.log("free data");
         userState = { 
           isRegistered:false,
-          clubs:resp.data.clubs
+          clubs:[]
         }
         //console.log(userState);
         return userState;

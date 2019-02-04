@@ -2,7 +2,8 @@
 /*1. ADD_USER
 2. ADD_EVENTS
 3. ADMIN_ADD    
-
+4. STAR_ADD
+5. SUGGEST_ADD
 */
 
 export const addUser = googleResp => ({
@@ -40,7 +41,8 @@ export const visibilityFilters = {
     WEEK_VIEW:'WEEK_VIEW',
     ALL_VIEW:'ALL_VIEW',
     INTEREST_VIEW:'INTEREST_VIEW',
-    SUGGESTED_VIEW:'SUGGESTED_VIEW'
+    SUGGESTED_VIEW:'SUGGESTED_VIEW',
+    CLUB_VIEW:'CLUB_VIEW'
 
 
 }

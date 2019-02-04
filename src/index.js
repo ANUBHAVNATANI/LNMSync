@@ -1,27 +1,22 @@
+//imports
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-//import "./pages/components/stylesheets/coming-soon.min.css"
-//import createHistory from "history/createBrowserHistory";
+import {Provider} from 'react-redux';
+import {createStore} from 'redux'; 
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import 'react-toastify/dist/ReactToastify.min.css'; 
-//import Club from "./pages/components/club";
-//import Try from "./pages/components/try";
-//import Inputs from "./pages/components/inputs";
-//import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-//import { App } from "./components";
-/*
-ReactDOM.render(
-  <Router history={createHistory()}>
-    <Switch>
-      <Route path="/" component={App} />
-    </Switch>
-  </Router>,
-  document.getElementById("root")
-);*/
+import rootReducer from './reducers'
+//creating the store
+const store = createStore(rootReducer)
 
-ReactDOM.render(<App />, document.getElementById("root"));
+//rendering to the dom
+ReactDOM.render(
+  <Provider store={store}>
+  <App />
+  </Provider>, 
+document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
