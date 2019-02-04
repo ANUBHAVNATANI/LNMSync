@@ -2,11 +2,76 @@
 import React, { Component } from "react";
 import GoogleLogin, {GoogleLogout} from "react-google-login";
 import { toast } from 'react-toastify';
+import axios from 'axios';
+
+//test code
+
+async function checkUser(gId){
+  var resp = await axios.get("http://lnmiit-sync.herokuapp.com/api/get_user/"+ gId)
+      //console.log(resp.data);
+      //let isRegistered = false;
+      //let clubs = [];
+      let userState={};
+      if(resp.data==={}){
+        //console.log("free data");
+        userState = { 
+          isRegistered:false,
+          clubs:resp.data.clubs
+        }
+        //console.log(userState);
+        return userState;
+      }
+      else{
+        //console.log("different");
+        //isRegistered=true;
+        //r_clubs = resp.data.clubs;
+        //r_batch = resp.data.batch;
+        userState = { 
+          isRegistered:true,
+          clubs:resp.data.clubs
+        }
+        //console.log(userState);
+        return userState;
+      }
+    
+  
+}
+
+
 //google login success function
-const loginSuccess = response => {
+async function loginSuccess(response){
   //use of the add user action to add the user to the database
   //react router command to move the user to different page
+  //let isRegistered = false;
+  //let r_clubs = [];
+  //let r_batch = null;
+  //console.log(response);
+  try{
+  let interState = await checkUser(response.googleId);
+  //console.log(interState);
+  let googleResp = {
+    username: response.profileObj.givenName+" "+response.profileObj.familyName,
+    googleId: response.googleId,
+    thumbnail: response.profileObj.imageUrl,
+    clubs: interState.clubs,
+    email: response.profileObj.email,
+    isRegistered: interState.isRegistered}
+  console.log(googleResp);
+   
+  
+
+  //console.log(resp)
+  
+  
+  //setting the resp to get the proper state passed
+ 
+  
+}
+catch(errorMsg){
+  console.log(errorMsg);
+}
 };
+
 //google login faliure function
 const loginFaliure = response => {
   toast.error('Login Error', {
@@ -22,6 +87,8 @@ const loginFaliure = response => {
 const logout = response => {
   //reverting user to the base page
 }
+
+//working 
 class Login extends Component {
   render() {
     return (
