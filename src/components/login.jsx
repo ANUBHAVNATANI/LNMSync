@@ -3,9 +3,12 @@ import React, { Component } from "react";
 import GoogleLogin, {GoogleLogout} from "react-google-login";
 import { toast } from 'react-toastify';
 import axios from 'axios';
-
+import {createStore} from 'redux'; 
+import rootReducer from '../reducers'
+import {addUser} from '../actions/index.js';
 //test code
-
+//-------------------------------------------//
+const store = createStore(rootReducer);
 async function checkUser(gId){
   var resp = await axios.get("http://lnmiit-sync.herokuapp.com/api/get_user/"+ gId)
       //console.log(resp.data);
@@ -37,7 +40,7 @@ async function checkUser(gId){
   
 }
 
-
+//-------------------------------------------------------------//
 //google login success function
 async function loginSuccess(response){
   //use of the add user action to add the user to the database
@@ -56,13 +59,13 @@ async function loginSuccess(response){
     clubs: interState.clubs,
     email: response.profileObj.email,
     isRegistered: interState.isRegistered}
-  console.log(googleResp);
-   
-  
+  //console.log(googleResp);
+  store.dispatch(addUser(googleResp));
+
 
   //console.log(resp)
   
-  
+  console.log(store.getState());
   //setting the resp to get the proper state passed
  
   

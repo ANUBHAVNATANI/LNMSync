@@ -24,7 +24,7 @@ export const adminAdd = adminStatus => ({
     adminStatus
 })
 
-export const starAdd = starEvnets => ({
+export const starAdd = starEvents => ({
     type: 'STAR_ADD',
     starEvents
 })
