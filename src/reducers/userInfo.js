@@ -19,5 +19,9 @@ const userInfo = (state = [] , action) => {
                     adminType:action.adminStatus.adminType,
                 }
             ]
+        default:
+            return state
     }
 }
+
+export default userInfo;

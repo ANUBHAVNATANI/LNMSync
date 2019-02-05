@@ -8,8 +8,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import 'react-toastify/dist/ReactToastify.min.css'; 
 import rootReducer from './reducers'
+
 //creating the store
-const store = createStore(rootReducer)
+const store = createStore(rootReducer);
+//getting the initial state
+//worked
+//console.log(store.getState());
+
 
 //rendering to the dom
 ReactDOM.render(
